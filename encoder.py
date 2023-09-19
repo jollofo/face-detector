@@ -14,7 +14,6 @@ firebase_admin.initialize_app(cred, {
 })
 
 
-# Importing student images
 folderPath = 'Images'
 pathList = os.listdir(folderPath)
 print(pathList)
@@ -30,8 +29,7 @@ for path in pathList:
     blob.upload_from_filename(fileName)
 
 
-    # print(path)
-    # print(os.path.splitext(path)[0])
+
 print(studentIds)
 
 
