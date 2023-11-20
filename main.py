@@ -11,28 +11,28 @@ from firebase_admin import storage
 import numpy as np
 from datetime import datetime
 
-cred = credentials.Certificate("serviceAccountKey.json")
+cred = credentials.Certificate("face-detection/accountKey.json")
 firebase_admin.initialize_app(cred, {
-    'databaseURL': "",
-    'storageBucket': ""
+    'databaseURL': "Your database URL",
+    'storageBucket': "Your storage bucket URL",
 })
 
 bucket = storage.bucket()
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(3, 640)
 cap.set(4, 480)
 
-imgBackground = cv2.imread('Resources/background.png')
+imgBackground = cv2.imread('face-detection/Resources/background.png')
 
-folderModePath = 'Resources/Modes'
+folderModePath = 'face-detection\Resources\Modes'
 modePathList = os.listdir(folderModePath)
 imgModeList = []
 for path in modePathList:
     imgModeList.append(cv2.imread(os.path.join(folderModePath, path)))
 
 print("Loading Encode File ...")
-file = open('EncodeFile.p', 'rb')
+file = open('face-detection/EncodeFile.p', 'rb')
 encodeListKnownWithIds = pickle.load(file)
 file.close()
 encodeListKnown, studentIds = encodeListKnownWithIds

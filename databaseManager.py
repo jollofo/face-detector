@@ -2,9 +2,9 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
-cred = credentials.Certificate("serviceAccountKey.json")
+cred = credentials.Certificate("face-detection/accountKey.json")
 firebase_admin.initialize_app(cred, {
-    'databaseURL': ""
+    'databaseURL': "Your database URL"
 })
 
 ref = db.reference('Students')
